@@ -1,0 +1,68 @@
+import React, {useState} from 'react'
+import logo from "../assets/Kuppi.lk_logo_03.png";
+import { useNavigate } from 'react-router-dom';
+import { IoSearch } from "react-icons/io5";
+
+const NavBar = ({onClickContact},{onclickImage}) => {
+  const navigate = useNavigate();
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleChange = (event) => {
+      setSearchTerm(event.target.value);
+  };
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log('Searching for:', searchTerm);
+  };
+
+
+  return (
+    <div className='mx-auto flex items-center justify-center gap-20 py-2'>
+
+      {/* Logo Section  */}
+      <div className="flex items-center cursor-pointer" onClick={onclickImage}>
+        <img src={logo} alt="Logo" className="h-auto w-32 object-contain" />
+      </div>
+
+      {/* search bar section  */}
+      <div className=" p-2 rounded-md">
+        <form onSubmit={handleSubmit} className="w-[400px] relative">
+            <input
+                type="text"
+                placeholder="Find Your University"
+                value={searchTerm}
+                onChange={handleChange}
+                className="w-full text-[16px] p-3 border-2 bg-whit border-gray-300 rounded-xl focus:outline-none focus:border-blue-500"
+            />
+            <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2">
+                <IoSearch className="h-6 w-6 text-gray-400"/>
+            </button>
+        </form>
+      </div>
+
+      {/* navigation section to another section */}
+      <button className="text-[16px] font-medium text-gray-900" 
+       onClick={onClickContact}>
+        Contact Us
+      </button>
+      <button className="text-[16px] font-medium text-gray-900" onClick={()=>{navigate("/tutor")}}>
+        Become a Tutor
+      </button>
+
+      {/* login and create account button section  */}
+      <div className="flex gap-4">
+        <button className="bg-white border text-[16px] border-gray-300 text-black font-semibold py-2 px-4 rounded-md hover:bg-gray-100 hover:border-gray-400">
+          Login
+        </button>
+        <button className="bg-blue-500 text-[16px] text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">
+          Create free account
+        </button>
+      </div>
+        
+    </div>
+  )
+}
+
+export default NavBar
+
