@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import logo from "../assets/Kuppi.lk_logo_03.png";
+import logo from "../../assets/Kuppi.lk_logo_03.png";
 import { useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
-const NavBar = ({onClickContact},{onclickImage}) => {
+const NavBar = () => {
   const navigate = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,6 +12,7 @@ const NavBar = ({onClickContact},{onclickImage}) => {
   const handleChange = (event) => {
       setSearchTerm(event.target.value);
   };
+
   const handleSubmit = (event) => {
       event.preventDefault();
       console.log('Searching for:', searchTerm);
@@ -21,7 +23,7 @@ const NavBar = ({onClickContact},{onclickImage}) => {
     <div className='mx-auto flex items-center justify-center gap-20 py-2'>
 
       {/* Logo Section  */}
-      <div className="flex items-center cursor-pointer" onClick={onclickImage}>
+      <div className="flex items-center cursor-pointer" onClick={()=>{navigate("/home")}}>
         <img src={logo} alt="Logo" className="h-auto w-32 object-contain" />
       </div>
 
@@ -42,17 +44,17 @@ const NavBar = ({onClickContact},{onclickImage}) => {
       </div>
 
       {/* navigation section to another section */}
-      <button className="text-[16px] font-medium text-gray-900" 
-       onClick={onClickContact}>
+      <Link to="/contact" className="text-[16px] font-medium text-gray-900">
         Contact Us
-      </button>
-      <button className="text-[16px] font-medium text-gray-900" onClick={()=>{navigate("/tutor")}}>
-        Become a Tutor
-      </button>
+      </Link>
+      <Link to="/" className="text-[16px] font-medium text-gray-900">
+        Home
+      </Link>
 
       {/* login and create account button section  */}
       <div className="flex gap-4">
-        <button className="bg-white border text-[16px] border-gray-300 text-black font-semibold py-2 px-4 rounded-md hover:bg-gray-100 hover:border-gray-400">
+        <button className="bg-white border text-[16px] border-gray-300 text-black font-semibold py-2 px-4 rounded-md hover:bg-gray-100 hover:border-gray-400"
+         onClick={()=>{navigate("/login")}}>
           Login
         </button>
         <button className="bg-blue-500 text-[16px] text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">

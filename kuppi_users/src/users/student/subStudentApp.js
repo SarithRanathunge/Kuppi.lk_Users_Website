@@ -1,9 +1,16 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
+import StudentNavBar from './components/StudentNavBar';
 
-const subStudentApp = () => {
+const SubStudentApp = () => {
   return (
-    <div>subStudentApp</div>
+    <div>
+      <StudentNavBar/>
+      <div>
+        <Outlet/>
+      </div>
+    </div>
   )
 }
 
-export default subStudentApp
+export default SubStudentApp

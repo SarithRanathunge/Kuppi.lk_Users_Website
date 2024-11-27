@@ -1,19 +1,44 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Portfolio from './portfolio/subPortfolioApp.js';
-import Tutor from './users/tutor/subTutorApp.js';
-import Student from './users/student/subStudentApp.js';
+import React, { useContext } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { AuthContext } from './context/AuthContext';
+import SubPortfolioApp from './portfolio/SubPortfolioApp';
+import Home from './portfolio/pages/Home';
+import Contact from './portfolio/pages/Contact';
+import StudentLogin from './portfolio/pages/Login';
+import SubStudentApp from './users/student/SubStudentApp';
+import StudentHome from './users/student/pages/StudentHome';
+import TutorLogin from './users/student/pages/TutorLogin';
+import SubTutorApp from './users/tutor/SubTutorApp';
+import TutorHome from './users/tutor/pages/TutorHome';
 
-function App() {
-  return (
-    <Router>
+const App = () => {
+    const { login } = useContext(AuthContext);
+    const { tutorlogin } = useContext(AuthContext);
+
+    return (
         <Routes>
-            <Route path="/" element={<Portfolio />} />
-            <Route path="/tutor" element={<Tutor />} />
-            <Route path="/student" element={<Student />} />
+            {/* Portfolio Routes */}
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/" element={<SubPortfolioApp />}>
+                <Route path="home" element={<Home />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="login" element={<StudentLogin />} />
+            </Route>
+
+            {/* Student Routes */}
+            <Route path="/student" element={login ? <SubStudentApp /> : <Navigate to="/home" replace />}>
+                <Route index element={<Navigate to="home" replace />} />
+                <Route path="home" element={<StudentHome />} />
+                <Route path="login" element={<TutorLogin />} />
+            </Route>
+
+            {/* Tutor Routes */}
+            <Route path="/tutor" element={tutorlogin ? <SubTutorApp /> : <Navigate to="/student/home" replace />}>
+                <Route index element={<Navigate to="home" replace />} />
+                <Route path="home" element={<TutorHome />} />
+            </Route>
         </Routes>
-    </Router>
-  );
-}
+    );
+};
 
 export default App;

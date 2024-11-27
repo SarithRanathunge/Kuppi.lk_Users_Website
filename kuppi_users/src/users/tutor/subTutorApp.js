@@ -1,9 +1,16 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
+import TutorNavBar from './components/TutorNavBar';
 
-const subTutorApp = () => {
+const SubTutorApp = () => {
   return (
-    <div>subTutorApp</div>
+    <div>
+      <TutorNavBar/>
+      <div>
+        <Outlet/>
+      </div>
+    </div>
   )
 }
 
-export default subTutorApp
+export default SubTutorApp

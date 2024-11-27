@@ -1,11 +1,11 @@
 import React from 'react'
-import logo from '../assets/Kuppi.lk_logo_03.png'
-import HomeImage from '../assets/home_page_image.png';
+import logo from '../../assets/Kuppi.lk_logo_03.png'
+import HomeImage from '../../assets/home_page_image.png';
 
 const home = () => {
   return (
     <div className='w-full h-full overflow-hidden relative flex py-16 flex-row gap-40 justify-center bg-gradient-to-r from-[#f8fcff] via-[#dbeeff] to-[#f8fcff]'>
-      <div className='flex flex-col gap-5'>
+      <div className='flex flex-col gap-11'>
         <span className='text-[52px] font-bold'>Welcome to</span>
         <img src={logo} alt="Logo" className="h-auto w-[400px] object-contain relative left-16"/>
         <button className=" w-[200px] mt-24 py-7 text-[18px] bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600">
