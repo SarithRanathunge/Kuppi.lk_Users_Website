@@ -23,7 +23,8 @@ const LoginTutor = () => {
     e.preventDefault();
 
     if (!fullName || !email || !phoneNumber || !university || !degree || !CurrentYear || !tutorBio || !qulaifications) {
-        setError('Please fill in all fields');
+      setError('Please fill in all fields');
+      return;
     }
 
     loginTutor('approved');
@@ -101,7 +102,8 @@ const LoginTutor = () => {
                   onChange={(e)=>{setUniversity(e.target.value)}}
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                 >
-                  <option className="">Select your university</option>
+                  <option>Select your university</option>
+                  <option>NIBM</option>
                 </select> 
             </div>
             {/* degree  */}
