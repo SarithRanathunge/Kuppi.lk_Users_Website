@@ -18,7 +18,6 @@ const Login = () => {
 
     if (!email || !password) {
       setError('Please fill in all fields');
-      return;
     }
 
     loginUser('approved');
@@ -27,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex w-full h-full bg-gradient-to-r from-blue-50 to-gray-100">
+    <div className="flex w-full h-full bg-gradient-to-r from-blue-100 to-gray-200">
         {/* Left Section */}
         <div className="w-1/2 flex items-center justify-center">
           <div className=" rounded-full w-[400px] h-[400px] flex items-center justify-center shadow-lg">
@@ -62,7 +61,7 @@ const Login = () => {
                 </div>
   
                 {/* Password Input */}
-                <div className="mb-10">
+                <div className="mb-2">
                   <label
                     htmlFor="password"
                     className="block text-[14pt] font-medium text-black"
@@ -78,7 +77,7 @@ const Login = () => {
                     className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
-                {error && <p>{error}</p>}
+                <p className='w-full h-[24px] px-2 flex items-center text-[11pt] text-red-600 font-semibold mb-2'>{error}</p>
   
                 {/* Login Button */}
                 <button

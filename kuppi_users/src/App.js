@@ -5,6 +5,7 @@ import SubPortfolioApp from './portfolio/SubPortfolioApp';
 import Home from './portfolio/pages/Home';
 import Contact from './portfolio/pages/Contact';
 import StudentLogin from './portfolio/pages/Login';
+import CreateAccount from './portfolio/pages/CreateAccount';
 import SubStudentApp from './users/student/SubStudentApp';
 import StudentHome from './users/student/pages/StudentHome';
 import TutorLogin from './users/student/pages/TutorLogin';
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="home" element={<Home />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="login" element={<StudentLogin />} />
+                <Route path="create" element={<CreateAccount />} />
             </Route>
 
             {/* Student Routes */}

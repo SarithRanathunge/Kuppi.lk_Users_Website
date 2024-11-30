@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import logo from "../../assets/Kuppi.lk_logo_03.png";
 import { useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
@@ -16,6 +16,32 @@ const NavBar = () => {
   const handleSubmit = (event) => {
       event.preventDefault();
       console.log('Searching for:', searchTerm);
+  };
+
+  const [login, setLogin] = useState(false);
+  const [checkAccount, newCheckAccount] = useState(false);
+
+  useEffect(() => {
+      check();
+      checkCreateAccount();
+  }, []);
+
+  const check = () => {
+      const studentdata = localStorage.getItem('student-role');
+      if (studentdata === 'approved') {
+          setLogin(true);
+      }else{
+        setLogin(false);
+      }
+  };
+
+  const checkCreateAccount = () => {
+    const studentdata = localStorage.getItem('student-role');
+    if (studentdata === 'approved') {
+      newCheckAccount(true);
+    }else{
+      newCheckAccount(false);
+    }
   };
 
 
@@ -53,13 +79,17 @@ const NavBar = () => {
 
       {/* login and create account button section  */}
       <div className="flex gap-4">
-        <button className="bg-white border text-[16px] border-gray-300 text-black font-semibold py-2 px-4 rounded-md hover:bg-gray-100 hover:border-gray-400"
-         onClick={()=>{navigate("/login")}}>
-          Login
-        </button>
-        <button className="bg-blue-500 text-[16px] text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">
-          Create free account
-        </button>
+        {login ? 
+        <Link to="/student/home" className="bg-white border text-[16px] border-gray-300 text-black font-semibold py-2 px-4 rounded-md hover:bg-gray-100 hover:border-gray-400">Login</Link> 
+        : 
+        <Link to="/login" className="bg-white border text-[16px] border-gray-300 text-black font-semibold py-2 px-4 rounded-md hover:bg-gray-100 hover:border-gray-400">Login</Link> 
+        }
+
+        {checkAccount ? 
+        <Link to="/student/home" className="bg-blue-500 text-[16px] text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">Create free account</Link> 
+        : 
+        <Link to="/create" className="bg-blue-500 text-[16px] text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">Create free account</Link> 
+        }
       </div>
         
     </div>
