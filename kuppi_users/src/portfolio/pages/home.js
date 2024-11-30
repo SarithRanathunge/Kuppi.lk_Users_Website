@@ -12,7 +12,7 @@ const Home = () => {
   }
   return (
     <div>
-        <div className='w-full h-full overflow-hidden relative flex py-16 flex-row gap-40 justify-center bg-gradient-to-r from-[#f8fcff] via-[#dbeeff] to-[#f8fcff]'>
+      <div className='w-full h-full overflow-hidden relative flex py-16 flex-row gap-40 justify-center bg-gradient-to-r from-[#f8fcff] via-[#dbeeff] to-[#f8fcff]'>
         <div className='flex flex-col gap-11'>
           <span className='text-[52px] font-bold'>Welcome to</span>
           <img src={logo} alt="Logo" className="h-auto w-[400px] object-contain relative left-16"/>

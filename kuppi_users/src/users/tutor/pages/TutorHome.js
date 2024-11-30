@@ -1,6 +1,9 @@
 import React from 'react'
 import Image from '../../../assets/tutor-hom-page-image.jpg'
 import Footer from '../../../common-components/Footer'
+import Laptop from '../../../assets/laptop_image.png'
+import Monitor from '../../../assets/monitor_image.png'
+import SocialReach from '../../../assets/social_reach.png'
 
 const Home = () => {
   return (
@@ -18,7 +21,56 @@ const Home = () => {
         </div>
       </header>
 
-      <div className='bg-gradient-to-b from-blue-200 to-gray-200'></div>
+      <div className="w-full flex items-center justify-center bg-gradient-to-b from-blue-200 to-gray-200">
+        <div className=" w-full flex flex-col px-48 pt-14 gap-8">
+
+          <div className="flex items-center justify-between bg-white px-10 py-8 rounded-lg shadow-lg">
+            <div>
+              <h2 className="text-2xl font-semibold">Jump to Course Creation</h2>
+              <p className="text-gray-600">Expand your horizons with learning</p>
+            </div>
+            <button className="w-auto h-14 bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 rounded">
+              Create Your Kuppi
+            </button>
+          </div>
+  
+          <div className="flex items-center justify-between bg-white px-20 py-8 rounded-lg shadow-lg">
+            <img src={Laptop} alt="laptop_image" className='w-24 h-auto'/>
+            <h2 className="text-2xl font-semibold">kuppi creating steps intro</h2>
+          </div>
+  
+          <div className="flex flex-row gap-16">
+
+            <div className="w-1/2 flex flex-row gap-3 items-center bg-white p-6 rounded-lg shadow-lg">
+              <img src={Monitor} alt="monitor_image" className='w-48 h-auto'/>
+              <div className='flex flex-col gap-2'>
+                <h3 className="text-xl font-semibold">Get Started with Video</h3>
+                <p className="text-gray-600">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   
+                </p>
+                <a href='/' className="text-blue-500 font-semibold underline">
+                  Get Started
+                </a>
+              </div>
+            </div>
+
+            <div className="w-1/2 flex flex-row gap-3 items-center bg-white p-6 rounded-lg shadow-lg">
+              <img src={SocialReach} alt="social_reach_image" className='w-48 h-auto'/>
+              <div className='flex flex-col gap-2'>
+                <h3 className="text-xl font-semibold">Get Started with Video</h3>
+                <p className="text-gray-600">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   
+                </p>
+                <a href='/' className="text-blue-500 font-semibold underline">
+                  Get Started
+                </a>
+              </div>
+            </div>
+
+          </div>   
+  
+        </div>
+      </div>
 
       <Footer/>
 
