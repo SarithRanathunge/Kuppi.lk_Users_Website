@@ -72,7 +72,7 @@ const TutorNavBar = () => {
     }
 
   return (
-    <div className='mx-auto flex items-center justify-between gap-16 py-2 px-24'>
+    <div className='mx-auto flex items-center justify-between py-2 px-32'>
       {/* Logo Section  */}
       <div className="flex items-center cursor-pointer" onClick={()=>{navigate("/home")}}>
         <img src={logo} alt="Logo" className="h-auto w-32 object-contain" />

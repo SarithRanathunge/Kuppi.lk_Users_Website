@@ -25,7 +25,7 @@ const App = () => {
                 <Route path="contact" element={<Contact />} />
                 <Route path="login" element={<StudentLogin />} />
                 <Route path="create" element={<CreateAccount />} />
-            </Route>
+            </Route>                 
 
             {/* Student Routes */}
             <Route path="/student" element={login ? <SubStudentApp /> : <Navigate to="/home" replace />}>

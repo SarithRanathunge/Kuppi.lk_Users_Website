@@ -1,9 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import logo from '../../../assets/Kuppi.lk_logo_03.png'
 import UserImage from '../../../assets/user_image.png';
 import Footer from '../../../common-components/Footer';
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { MdKeyboardDoubleArrowUp } from "react-icons/md";
+import UniLogo from '../../../assets/nibm-logo.png'
+import UniversityBadge from '../../../common-components/UniversityBadge';
 
 const Home = () => {
+
+  // State to track the number of visible badges
+  const [visibleCount, setVisibleCount] = useState(12); // Initially show 8 badges
+  const badges = Array(16).fill(UniLogo); // Array of badges (16 in this case)
+
+  // Function to toggle the number of visible badges
+  const toggleBadges = () => {
+    setVisibleCount((prevCount) =>
+      prevCount === badges.length ? 12 : badges.length
+    );
+  };
+
   return (
     <div>
       <div className='w-full h-full overflow-hidden relative flex py-16 flex-row gap-44 justify-center bg-gradient-to-r from-[#f8fcff] via-[#dbeeff] to-[#f8fcff]'>
@@ -23,6 +39,44 @@ const Home = () => {
         <div className='w-16 h-16 rounded-full absolute bg-blue-300 top-[165 px] left-36'></div>
         <div className='w-14 h-14 rounded-full absolute bg-blue-300 top-[550px] right-[750px]'></div>
       </div>
+
+      <div className='w-full h-full flex flex-col gap-8 px-14 py-8'>
+        <div className='flex flex-col gap-5'>
+          <span className='font-semibold text-[28pt]'>Your University</span>
+          <div className="w-ful h-auto flex flex-row px-12 pl-36">
+            <UniversityBadge logo={UniLogo    } />
+          </div>
+        </div>
+        <div className='flex flex-col gap-5'>
+          <span className='font-semibold text-[28pt]'>Other University</span>
+          <div className="w-full h-auto flex flex-wrap justify-center gap-10 px-12">
+            {/* Display badges up to the visible count */}
+            {badges.slice(0, visibleCount).map((logo, index) => (
+              <UniversityBadge key={index} logo={logo} />
+            ))}
+          </div>
+  
+          {/* Toggle Button */}
+          <div className="flex justify-center mt-6">
+            <button
+              className="flex flex-col items-center font-medium text-center text-[14pt] text-blue-500"
+              onClick={toggleBadges}
+            >
+              {visibleCount === badges.length ? (
+                  <>
+                    See Less  <MdKeyboardDoubleArrowUp className='text-[20pt] text-blue-500'/>
+                  </>
+                ) : (
+                  <>
+                    See More <MdKeyboardDoubleArrowDown className='text-[20pt] text-blue-500'/>
+                  </>
+                )
+              }
+            </button>
+          </div>
+        </div>
+      </div>
+
       <Footer/>
     </div>
   )

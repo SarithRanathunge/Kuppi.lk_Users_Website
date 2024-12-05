@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logoutTutor = () => {
-        localStorage.removeItem('Student-role');
+        localStorage.removeItem('student-role');
         localStorage.removeItem('tutor-role');
         setTutorLogin(false);
     };
