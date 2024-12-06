@@ -7,11 +7,16 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [login, setLogin] = useState(false);
     const [tutorlogin, setTutorLogin] = useState(false);
+    const [module, newModule] = useState('Empty module');
 
     useEffect(() => {
         checkLoginStatus();
         checkTutorLoginStatus();
     }, []);
+
+    const addModuleName = (module)=>{
+        newModule(module)
+    }
 
     const checkLoginStatus = () => {
         const studentdata = localStorage.getItem('student-role');
@@ -49,7 +54,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ login, loginUser, logoutUser, tutorlogin, loginTutor, logoutTutor }}>
+        <AuthContext.Provider value={{ login, loginUser, logoutUser, tutorlogin, loginTutor, logoutTutor, module, addModuleName}}>
             {children}
         </AuthContext.Provider>
     );

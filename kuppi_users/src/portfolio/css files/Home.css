@@ -1,0 +1,24 @@
+.slick-prev:before,
+.slick-next:before {
+  color: black; /* Set the arrows to black */
+}
+
+/* Add padding inside each slide */
+.slick-slide > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+/* Customize dots */
+.slick-dots li button:before {
+    color: gray; /* Set the dots to white */
+    font-size: 9px !important; /* Resize dots */
+}
+
+/* Customize active dot */
+.slick-dots li.slick-active button:before {
+  color: black; /* Keep the active dot white */
+}

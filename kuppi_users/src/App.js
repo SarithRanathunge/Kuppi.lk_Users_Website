@@ -8,11 +8,14 @@ import StudentLogin from './portfolio/pages/Login';
 import CreateAccount from './portfolio/pages/CreateAccount';
 import SubStudentApp from './users/student/SubStudentApp';
 import StudentHome from './users/student/pages/StudentHome';
+import CourseModules from './users/student/pages/CourseModules';
+import ModuleSelectAndSearch from './users/student/pages/ModuleSelectAndSearch';
 import TutorLogin from './users/student/pages/TutorLogin';
 import SubTutorApp from './users/tutor/SubTutorApp';
 import TutorHome from './users/tutor/pages/TutorHome';
 
 const App = () => {
+    //get the login from the AuthContext for acessability in each user stage
     const { login } = useContext(AuthContext);
     const { tutorlogin } = useContext(AuthContext);
 
@@ -32,6 +35,8 @@ const App = () => {
                 <Route index element={<Navigate to="home" replace />} />
                 <Route path="home" element={<StudentHome />} />
                 <Route path="login" element={<TutorLogin />} />
+                <Route path="course_modules" element={<CourseModules />} />
+                <Route path="Module_Select_And_Search" element={<ModuleSelectAndSearch />} />
             </Route>
 
             {/* Tutor Routes */}

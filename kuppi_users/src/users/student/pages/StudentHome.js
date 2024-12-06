@@ -6,8 +6,10 @@ import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 import UniLogo from '../../../assets/nibm-logo.png'
 import UniversityBadge from '../../../common-components/UniversityBadge';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
 
   // State to track the number of visible badges
   const [visibleCount, setVisibleCount] = useState(12); // Initially show 8 badges
@@ -27,6 +29,7 @@ const Home = () => {
           <span className='text-[52px] font-bold'>Welcome to</span>
           <img src={logo} alt="Logo" className="h-auto w-[400px] object-contain relative left-16"/>
           <button className=" w-[200px] mt-24 py-7 text-[18px] bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600"
+           onClick={() => navigate('/student/course_modules')}
           >
             Purchase Kuppi
           </button>

@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import logo from "../../assets/Kuppi.lk_logo_bgblue.png"
 import Google from "../../assets/google_logo.png"
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,18 +11,22 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
-
+ 
+  //Login details Submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    //check email or password is empty or not
     if (!email || !password) {
       setError('Please fill in all fields');
       return;
     }
 
+    //Give access for login
     loginUser('approved');
+    //Empty the error message
     setError('');
+    //Navigate to student home page
     navigate('/student/home');
   };
 
@@ -89,7 +93,7 @@ const Login = () => {
                 </button>
               </form>
   
-              {/* OR Divider */}
+              {/* -OR- Divider */}
               <div className="flex items-center my-8">
                 <hr className="flex-grow border-gray-300" />
                 <span className="mx-4 text-sm text-gray-500">OR</span>
