@@ -10,6 +10,9 @@ import SubStudentApp from './users/student/SubStudentApp';
 import StudentHome from './users/student/pages/StudentHome';
 import CourseModules from './users/student/pages/CourseModules';
 import ModuleSelectAndSearch from './users/student/pages/ModuleSelectAndSearch';
+import ModulePayment from './users/student/pages/ModulePayment';
+import MyKuppi from './users/student/pages/MyKuppi';
+import StudentYear from './users/student/pages/StudentYear';
 import TutorLogin from './users/student/pages/TutorLogin';
 import SubTutorApp from './users/tutor/SubTutorApp';
 import TutorHome from './users/tutor/pages/TutorHome';
@@ -36,7 +39,10 @@ const App = () => {
                 <Route path="home" element={<StudentHome />} />
                 <Route path="login" element={<TutorLogin />} />
                 <Route path="course_modules" element={<CourseModules />} />
-                <Route path="Module_Select_And_Search" element={<ModuleSelectAndSearch />} />
+                <Route path="module_select_and_search" element={<ModuleSelectAndSearch />} />
+                <Route path="module_payment" element={<ModulePayment />} />
+                <Route path="mykuppi" element={<MyKuppi />} />
+                <Route path="student_year" element={<StudentYear />} />
             </Route>
 
             {/* Tutor Routes */}

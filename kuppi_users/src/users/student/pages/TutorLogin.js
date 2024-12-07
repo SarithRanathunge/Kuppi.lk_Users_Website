@@ -27,7 +27,7 @@ const LoginTutor = () => {
       return;
     }
 
-    loginTutor('approved');
+    loginTutor('approved', 'nibm');
     setError('');
     navigate('/tutor/home');
   }

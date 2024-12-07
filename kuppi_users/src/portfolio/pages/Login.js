@@ -23,7 +23,7 @@ const Login = () => {
     }
 
     //Give access for login
-    loginUser('approved');
+    loginUser('approved', 'nibm');
     //Empty the error message
     setError('');
     //Navigate to student home page

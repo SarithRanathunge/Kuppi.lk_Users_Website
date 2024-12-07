@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble } from 'react-icons/fa';
-import Logo from '../assets/Kuppi.lk_logo_white_2.png'
+import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble } from 'react-icons/fa'; // react-icons
+import Logo from '../assets/Kuppi.lk_logo_white_2.png' //Kuppi Logo
 
 function Footer() {
   return (
@@ -51,6 +51,7 @@ function Footer() {
             </div>
           </div>
         </div>
+        {/* bottom icons of social media */}
         <div className="mt-14 pt-14 border-t-2 border-gray-700 flex justify-center pb-6">
           <ul className="flex space-x-8">
             <li><a href="https://twitter.com/"><FaTwitter className="text-2xl" /></a></li>

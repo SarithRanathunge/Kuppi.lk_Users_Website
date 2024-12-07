@@ -13,7 +13,29 @@ const Home = () => {
 
   // State to track the number of visible badges
   const [visibleCount, setVisibleCount] = useState(12); // Initially show 8 badges
-  const badges = Array(16).fill(UniLogo); // Array of badges (16 in this case)
+  const badges = [
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'}
+  ] // Array of badges (16 in this case)
 
   // Function to toggle the number of visible badges
   const toggleBadges = () => {
@@ -47,15 +69,15 @@ const Home = () => {
         <div className='flex flex-col gap-5'>
           <span className='font-semibold text-[28pt]'>Your University</span>
           <div className="w-ful h-auto flex flex-row px-12 pl-36">
-            <UniversityBadge logo={UniLogo    } />
+            <UniversityBadge logo={UniLogo} university='nibm'/>
           </div>
         </div>
         <div className='flex flex-col gap-5'>
           <span className='font-semibold text-[28pt]'>Other University</span>
           <div className="w-full h-auto flex flex-wrap justify-center gap-10 px-12">
             {/* Display badges up to the visible count */}
-            {badges.slice(0, visibleCount).map((logo, index) => (
-              <UniversityBadge key={index} logo={logo} />
+            {badges.slice(0, visibleCount).map((data, index) => (
+              <UniversityBadge key={index} logo={data.logo} university={data.university} />
             ))}
           </div>
   

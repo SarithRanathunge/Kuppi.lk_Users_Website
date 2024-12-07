@@ -128,7 +128,10 @@ const StudentNavBar = () => {
       </div>
 
       {/* navigation section to another section */}
-      <Link to="/contact" className="text-[16px] font-medium text-gray-900">
+      <Link to="/student/Home" className="text-[16px] font-medium text-gray-900">
+        Home
+      </Link>
+      <Link to="/student/mykuppi" className="text-[16px] font-medium text-gray-900">
         My Kuppi
       </Link>
       <Link to="/contact" className="text-[16px] font-medium text-gray-900">

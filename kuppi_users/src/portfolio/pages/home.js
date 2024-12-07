@@ -22,7 +22,29 @@ const Home = () => {
   //Show more and less the University------------------------------------------------------------------------
   // State to track the number of visible badges
   const [visibleCount, setVisibleCount] = useState(12); // Initially show 8 badges
-  const badges = Array(16).fill(UniLogo); // Array of badges (16 in this case)
+  const badges = [
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'},
+    {logo: UniLogo, university:'IIT'}
+  ] // Array of badges (16 in this case)
 
   // Function to toggle the number of visible badges
   const toggleBadges = () => {
@@ -116,8 +138,8 @@ const Home = () => {
         <span className='font-semibold text-[28pt]'>Explore Kuppi Select Your University</span>
         <div className="w-full h-auto flex flex-wrap justify-center gap-10 p-12">
           {/* Display badges up to the visible count */}
-          {badges.slice(0, visibleCount).map((logo, index) => (
-            <UniversityBadge key={index} logo={logo} />
+          {badges.slice(0, visibleCount).map((data, index) => (
+              <UniversityBadge key={index} logo={data.logo} university={data.university} />
           ))}
         </div>
 

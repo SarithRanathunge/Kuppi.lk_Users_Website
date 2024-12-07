@@ -1,13 +1,23 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext'; 
 
-const UniversityBadge = ({logo}) => {
+const UniversityBadge = ({logo, university}) => {
     const navigate = useNavigate();
+    const { addUniversity} =useContext(AuthContext)
   
+    //click action of the university badge
     const onClickBadge = () => {
         const studentdata = localStorage.getItem('student-role');
-        if (studentdata === 'approved') {
-            navigate('/student/home')
+        //check the user already login or not (already token saved or not)
+        if (studentdata === 'approved') { 
+            if(localStorage.getItem('university-student-role') === university){
+              navigate('/student/course_modules')
+              addUniversity(university)
+            }else{
+              navigate('/student/student_year')
+              addUniversity(university)
+            }
         }else{
           navigate('/login')
         }

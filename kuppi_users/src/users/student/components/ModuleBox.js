@@ -8,7 +8,7 @@ const ModuleBox = ({number, module}) => {
 
   const handleSubmit=()=>{
     addModuleName(module)
-    navigate('/student/Module_Select_And_Search')
+    navigate('/student/module_select_and_search')
   }
 
   return (
