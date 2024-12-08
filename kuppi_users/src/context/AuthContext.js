@@ -12,11 +12,25 @@ export const AuthProvider = ({ children }) => {
     const [module, newModule] = useState('Empty module'); // Stores the selected module name
     const [moduleKuppi, setModuleKuppi] = useState('Empty module kuppi'); // Stores module info for Kuppi
 
+    //tutor
+    const [year, setYear] = useState('Empty Year')
+    const [faculty, setFaculty] = useState('Empty Faculty')
+
     // useEffect hook runs on component mount to check if user or tutor is logged in
     useEffect(() => {
         checkLoginStatus(); // Check if student is logged in
         checkTutorLoginStatus(); // Check if tutor is logged in
     }, []);
+
+    const addTutorYear = (year) => {
+        setYear(year)
+        console.log('Tutor Select Year: ' + year);
+    }
+
+    const addTutorFaculty = (faculty) => {
+        setFaculty(faculty)
+        console.log('Tutor Select Faculty: ' + faculty)
+    }
 
     // Function to update the university state
     const addUniversity = (university) => {
@@ -72,7 +86,6 @@ export const AuthProvider = ({ children }) => {
 
     // Function to handle tutor logout, remove data from local storage, and update state
     const logoutTutor = () => {
-        localStorage.removeItem('student-role'); // Remove student role from local storage
         localStorage.removeItem('tutor-role'); // Remove tutor role from local storage
         localStorage.removeItem('university-tutor-role'); // Remove university name from local storage
         setTutorLogin(false); // Set tutor login to false
@@ -82,7 +95,8 @@ export const AuthProvider = ({ children }) => {
         // Provide the context values (state and functions) to child components
         <AuthContext.Provider value={{
             login, loginUser, logoutUser, tutorlogin, loginTutor, logoutTutor,
-            university, addUniversity, module, addModuleName, moduleKuppi, addModuleKuppi
+            university, addUniversity, module, addModuleName, moduleKuppi, addModuleKuppi,
+            year, addTutorYear, faculty, addTutorFaculty
         }}>
             {children} {/* Render the children components within the provider */}
         </AuthContext.Provider>

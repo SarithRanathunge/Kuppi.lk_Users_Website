@@ -16,6 +16,10 @@ import StudentYear from './users/student/pages/StudentYear';
 import TutorLogin from './users/student/pages/TutorLogin';
 import SubTutorApp from './users/tutor/SubTutorApp';
 import TutorHome from './users/tutor/pages/TutorHome';
+import Withdrawal from './users/tutor/pages/Withdrawal';
+import Earnings from './users/tutor/pages/Earnings';
+import SelectYear from './users/tutor/pages/SelectYear';
+import SelectFaculty from './users/tutor/pages/SelectFaculty';
 
 const App = () => {
     //get the login from the AuthContext for acessability in each user stage
@@ -49,6 +53,10 @@ const App = () => {
             <Route path="/tutor" element={tutorlogin ? <SubTutorApp /> : <Navigate to="/student/home" replace />}>
                 <Route index element={<Navigate to="home" replace />} />
                 <Route path="home" element={<TutorHome />} />
+                <Route path="withdrawal" element={<Withdrawal />} />
+                <Route path="earnings" element={<Earnings />} />
+                <Route path="select_year" element={<SelectYear />} />
+                <Route path="select_faculty" element={<SelectFaculty />} />
             </Route>
         </Routes>
     );

@@ -4,8 +4,11 @@ import Footer from '../../../common-components/Footer' // Footer component
 import Laptop from '../../../assets/laptop_image.png' // Laptop image
 import Monitor from '../../../assets/monitor_image.png' // Monitor image
 import SocialReach from '../../../assets/social_reach.png' // Social reach image
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen flex flex-col items-center">
 
@@ -34,7 +37,9 @@ const Home = () => {
               <p className="text-gray-600">Expand your horizons with learning</p>
             </div>
             {/* Button to create Kuppi */}
-            <button className="w-auto h-14 bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 rounded">
+            <button className="w-auto h-14 bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 rounded"
+            onClick={()=>{navigate('/tutor/select_year')}}
+            >
               Create Your Kuppi
             </button>
           </div>

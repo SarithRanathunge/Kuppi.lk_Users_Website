@@ -63,11 +63,9 @@ const TutorNavBar = () => {
   };
 
   // Logout function using context
-  const { logoutUser } = useContext(AuthContext);
   const { logoutTutor } = useContext(AuthContext);
 
   const studentLogout = () => {
-    logoutUser();
     logoutTutor();
     navigate('/');
   };
@@ -80,7 +78,7 @@ const TutorNavBar = () => {
   return (
     <div className='mx-auto flex items-center justify-between py-2 px-32'>
       {/* Logo Section */}
-      <div className="flex items-center cursor-pointer" onClick={() => { navigate("/home"); }}>
+      <div className="flex items-center cursor-pointer" onClick={() => { navigate("/tutor/home"); }}>
         <img src={logo} alt="Logo" className="h-auto w-32 object-contain" />
       </div>
 
@@ -214,10 +212,14 @@ const TutorNavBar = () => {
             >
               Switch to Student
             </button>
-            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded">
+            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded"
+            onClick={()=>{navigate('/tutor/earnings')}}
+            >
               Earnings
             </button>
-            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded">
+            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded"
+             onClick={()=>{navigate('/tutor/withdrawal')}}
+            >
               Withdrawal
             </button>
           </div>
