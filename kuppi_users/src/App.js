@@ -20,6 +20,9 @@ import Withdrawal from './users/tutor/pages/Withdrawal';
 import Earnings from './users/tutor/pages/Earnings';
 import SelectYear from './users/tutor/pages/SelectYear';
 import SelectFaculty from './users/tutor/pages/SelectFaculty';
+import UploadSection from './users/tutor/pages/UploadSection';
+import UploadKuppiSession from './users/tutor/pages/UploadKuppiSession';
+import UploadFilesSection from './users/tutor/pages/UploadFilesSection';
 
 const App = () => {
     //get the login from the AuthContext for acessability in each user stage
@@ -57,6 +60,9 @@ const App = () => {
                 <Route path="earnings" element={<Earnings />} />
                 <Route path="select_year" element={<SelectYear />} />
                 <Route path="select_faculty" element={<SelectFaculty />} />
+                <Route path="Upload_section" element={<UploadSection />} />
+                <Route path="upload_kuppi" element={<UploadKuppiSession />} />
+                <Route path="upload_files" element={<UploadFilesSection />} />
             </Route>
         </Routes>
     );

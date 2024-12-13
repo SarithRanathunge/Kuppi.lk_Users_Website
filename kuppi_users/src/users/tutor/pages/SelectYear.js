@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { IoIosArrowDropleftCircle } from 'react-icons/io';
-import YearBox from '../components/YearBox';
-import { useNavigate } from 'react-router-dom';
+import { IoIosArrowDropleftCircle } from 'react-icons/io'; // Importing back-arrow icon
+import YearBox from '../components/YearBox'; // Importing reusable YearBox component
+import { useNavigate } from 'react-router-dom'; // Importing hook for navigation between routes
 
 const SelectYear = () => {
-  const navigate = useNavigate()
-  const numOfYears = 4; // Number of years to display
+  const navigate = useNavigate(); // Hook to handle route navigation
+  const numOfYears = 4; // Number of university years to display
 
-  // Initialize years as an array containing numbers from 1 to numOfYears
+  // Initialize an array of years (1 to numOfYears) using useState
   const [years] = useState(Array.from({ length: numOfYears }, (_, i) => i + 1));
 
   return (
     <div className='w-full min-h-[88.71vh] flex flex-col bg-gradient-to-b from-blue-200 to-gray-200 relative px-[100px] pt-[18px]'>
       {/* Back Button */}
-      <div className='absolute top-6 left-6' onClick={()=>{navigate('/tutor/home')}}>
+      <div 
+        className='absolute top-6 left-6 cursor-pointer' 
+        onClick={() => { navigate('/tutor/home') }} // Navigate back to the home page
+      >
         <IoIosArrowDropleftCircle className='text-[40px] text-blue-500' />
       </div>
 
@@ -25,9 +28,12 @@ const SelectYear = () => {
       {/* Year Selection Section */}
       <div className='w-full h-full flex flex-col gap-4 py-[130px]'>
         <div className='w-full h-full flex flex-wrap gap-9 items-center justify-between'>
-          {/* Map over the years array */}
+          {/* Map through the years array and render a YearBox for each year */}
           {years.map((year, index) => (
-            <YearBox key={index} num={year} />
+            <YearBox 
+              key={index} // Unique key for each YearBox component
+              num={year} // Passing the year number as a prop to YearBox
+            />
           ))}
         </div>
       </div>

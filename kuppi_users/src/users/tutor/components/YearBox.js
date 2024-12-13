@@ -6,7 +6,7 @@ const YearBox = ({num}) => {
   const navigate = useNavigate()
   const {addTutorYear} = useContext(AuthContext)
   return (
-    <div className="w-[300px] h-[300px] flex flex-col justify-center gap-10 items-center bg-blue-500 text-white font-bold py-2 px-4 rounded-lg cursor-pointer"
+    <div className="w-[300px] h-[300px] flex flex-col justify-center gap-10 items-center bg-blue-500 text-white font-bold py-2 px-4 rounded-lg cursor-pointer hover:bg-blue-600"
     onClick={()=>{
         addTutorYear(num)
         navigate('/tutor/select_faculty')

@@ -10,7 +10,7 @@ const FacultyBox = ({number, faculty}) => {
   // handleSubmit function that adds the selected module to the context and navigates to the module selection page
   const handleSubmit = () => {
     addTutorFaculty(faculty); // Call addModuleName to save the selected module in context
-    navigate('/tutor/home'); // Navigate to the module selection and search page
+    navigate('/tutor/Upload_section'); // Navigate to the module selection and search page
   };
 
   return (
