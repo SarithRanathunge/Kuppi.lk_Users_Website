@@ -2,16 +2,16 @@ import React, { useState, useContext } from 'react'
 import { IoIosArrowDropleftCircle } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import MainImage from '../../../assets/tutor-hom-page-image.jpg'
-import { AuthContext } from '../../../context/AuthContext'
 import UploadedSessionBox from '../components/UploadedSessionBox'
 import KuppiImage from '../../../assets/searched-module-main-image.jpg'
 import { FaCheckCircle } from "react-icons/fa"
+import { AuthContext } from '../../../context/AuthContext'
 
 const UploadSection = () => {
     // Initialize navigation hook and context values
     const navigate = useNavigate()
-    const { year, faculty } = useContext(AuthContext)
     const [isPopupVisible, setPopupVisible] = useState(false); // State to control visibility of the popup
+    const { kuppiModule } = useContext(AuthContext)
 
     // Function to toggle the visibility of the popup
     const togglePopup = () => {
@@ -31,7 +31,7 @@ const UploadSection = () => {
   return (
     <div className='w-full min-h-[88.71vh] flex flex-col bg-gradient-to-b from-blue-200 to-gray-200 relative px-[100px] pt-[18px] gap-5'>
         {/* Back arrow button to navigate to select faculty page */}
-        <div className='absolute top-6 left-6 cursor-pointer' onClick={()=>{navigate('/tutor/select_faculty')}}>
+        <div className='absolute top-6 left-6 cursor-pointer' onClick={()=>{navigate('/tutor/your_kuppi')}}>
           <IoIosArrowDropleftCircle className='text-[40px] text-blue-500' />
         </div>
 
@@ -45,8 +45,8 @@ const UploadSection = () => {
             <div className='w-full h-[200px] relative'>
                 <img src={MainImage} alt="main-image" className='w-full h-full object-cover rounded-lg' />
                 <div className='w-fit h-fit flex flex-col absolute top-12 left-16 p-4 bg-white bg-opacity-50 rounded-lg'>
-                    <span className='text-[24pt] font-semibold '>{faculty}</span>
-                    <span className='text-[16pt] font-semibold'>{year}th Year</span>
+                    <span className='text-[24pt] font-semibold '>{kuppiModule}</span>
+                    <span className='text-[16pt] font-semibold'></span>
                 </div>
             </div>
             

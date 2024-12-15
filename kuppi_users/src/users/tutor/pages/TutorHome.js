@@ -41,7 +41,7 @@ const Home = () => {
             {/* Button to navigate to course creation */}
             <button 
               className="w-auto h-14 bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 rounded"
-              onClick={() => { navigate('/tutor/select_year'); }}
+              onClick={() => { navigate('/tutor/select_degree'); }}
             >
               Create Your Kuppi
             </button>

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { IoIosArrowDropleftCircle } from 'react-icons/io' // Back arrow icon
 import { useNavigate } from 'react-router-dom' // Navigation hook
 import UploadIcon from '../../../assets/upload_blue_icon.png' // Upload icon image
 import { FaCheckCircle } from "react-icons/fa" // Checkmark icon for popup
+import { AuthContext } from '../../../context/AuthContext'
 
 const UploadFilesSection = () => {
   const navigate = useNavigate(); // To navigate between pages
@@ -13,6 +14,7 @@ const UploadFilesSection = () => {
   const [selectedFile, setSelectedFile] = useState(null); // State for uploaded file
   const [isPopupVisible, setPopupVisible] = useState(false); // State for popup visibility
   const [error, setError] = useState(); // State for validation errors
+  const { courseModule } = useContext(AuthContext)
 
   // Function to handle the "Create" button click
   const handleCreate = () => {
@@ -53,14 +55,14 @@ const UploadFilesSection = () => {
       {/* Back button to navigate to the previous page */}
       <div className='absolute top-6 left-6 cursor-pointer'>
         <IoIosArrowDropleftCircle 
-          onClick={() => { navigate('/tutor/upload_kuppi') }} 
+          onClick={() => { navigate('/tutor/select_module') }} 
           className='text-[40px] text-blue-500' 
         />
       </div>
 
       {/* Page title */}
       <div>
-        <span className='text-[24pt] font-semibold'>Upload Files Section</span>
+        <span className='text-[24pt] font-semibold'>Kuppi Creation - {courseModule}</span>
       </div>
 
       {/* Main content section */}
@@ -97,7 +99,7 @@ const UploadFilesSection = () => {
                 onClick={handleUpload}
                 className="py-2 px-4 border-l-2 border-gray-300 hover:bg-gray-200 rounded-r-lg"
               >
-                Upload File
+                Upload Image
               </button>
             </div>
           </div>
@@ -190,7 +192,7 @@ const UploadFilesSection = () => {
             </div>
             <FaCheckCircle className='text-[96pt] text-blue-500' />
             <div className='w-full h-full flex flex-col justify-center gap-1'>
-              <span className='text-[18pt] text-blue-500 font-medium text-center'>Kuppi Session Upload Successfully</span>
+              <span className='text-[18pt] text-blue-500 font-medium text-center'>New Kuppi Creation Successfull</span>
             </div>
             <button onClick={() => { navigate('/tutor/home') }} className='w-[200px] py-3 text-[12pt] font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600'>
               Okay

@@ -23,6 +23,10 @@ const Earnings = () => {
   const earningArray = [
     { moduleImage: moduleImage, module: 'Introduction to Computer Science', purchased: 20, price: 2500 },
     { moduleImage: moduleImage, module: 'Introduction to Computer Science', purchased: 20, price: 2500 },
+    { moduleImage: moduleImage, module: 'Introduction to Computer Science', purchased: 20, price: 2500 },
+    { moduleImage: moduleImage, module: 'Introduction to Computer Science', purchased: 20, price: 2500 },
+    { moduleImage: moduleImage, module: 'Introduction to Computer Science', purchased: 20, price: 2500 },
+    { moduleImage: moduleImage, module: 'Introduction to Computer Science', purchased: 20, price: 2500 }
     // Add more entries as needed
   ];
 

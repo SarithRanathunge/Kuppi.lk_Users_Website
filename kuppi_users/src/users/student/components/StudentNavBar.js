@@ -244,8 +244,12 @@ const StudentNavBar = () => {
             <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded">
               Profile
             </button>
-            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded">
-              Your Kuppi
+            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded"
+            onClick={()=>{
+              navigate('/student/mykuppi')
+            }}
+            >
+              My Kuppi
             </button>
             <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded"
              onClick={switchToTutor}

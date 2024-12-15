@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoIosArrowDropleftCircle } from 'react-icons/io' // Importing a back-arrow icon
-import FacultyBox from '../components/FacultyBox' // Importing a reusable FacultyBox component
+import FacultyBox from '../components/DegreeBox' // Importing a reusable FacultyBox component
 import { useNavigate } from 'react-router-dom' // Importing navigation hook
 
 const SelectFaculty = () => {
@@ -8,15 +8,15 @@ const SelectFaculty = () => {
 
   // Array containing data for each faculty
   const facultyArray = [
-    { faculty: 'BSC Computing' },
-    { faculty: 'BSC Information Technology for Business' },
-    { faculty: 'BSC Human Resource Management' },
-    { faculty: 'BSC Management and Leadership' },
-    { faculty: 'BSC Professional Accounting' },
-    { faculty: 'BSC Digital Banking and Finance' },
-    { faculty: 'BSC Ethical Hacking and Network Security' },
-    { faculty: 'BSC Computing' },
-    { faculty: 'BSC Computing' }
+    { degree: 'BSC Computing' },
+    { degree: 'BSC Information Technology for Business' },
+    { degree: 'BSC Human Resource Management' },
+    { degree: 'BSC Management and Leadership' },
+    { degree: 'BSC Professional Accounting' },
+    { degree: 'BSC Digital Banking and Finance' },
+    { degree: 'BSC Ethical Hacking and Network Security' },
+    { degree: 'BSC Computing' },
+    { degree: 'BSC Computing' }
   ]
 
   return (
@@ -24,7 +24,7 @@ const SelectFaculty = () => {
       {/* Back Button */}
       <div 
         className='absolute top-6 left-6 cursor-pointer' 
-        onClick={() => { navigate('/tutor/select_year') }} // Navigate to the previous page when clicked
+        onClick={() => { navigate('/tutor/home') }} // Navigate to the previous page when clicked
       >
         <IoIosArrowDropleftCircle className='text-[40px] text-blue-500' />
       </div>
@@ -41,7 +41,7 @@ const SelectFaculty = () => {
           <FacultyBox 
             key={index} // Unique key for each FacultyBox
             number={index} // Passing the index of the faculty as a prop
-            faculty={data.faculty} // Passing the faculty name as a prop
+            degree={data.degree} // Passing the degree name as a prop
           />
         ))}
       </div>

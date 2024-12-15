@@ -1,77 +1,85 @@
-// Importing necessary libraries and components
-import React, { useState } from "react";
-import { IoIosArrowDropleftCircle } from "react-icons/io"; // Icon for back navigation
-import { useNavigate } from "react-router-dom"; // React Router hook for navigation
-import { IoCloudUploadSharp, IoCloudDoneSharp } from "react-icons/io5"; // Icons for file upload previews
+import React, { useState } from "react"; 
+import { IoIosArrowDropleftCircle } from "react-icons/io"; 
+import { useNavigate } from "react-router-dom"; 
+import { IoCloudUploadSharp, IoCloudDoneSharp } from "react-icons/io5"; 
+import { FaCheckCircle } from "react-icons/fa";
 
-// Main component definition
+// The UploadKuppiSession component allows tutors to upload video sessions along with a title, description, and thumbnail.
 const UploadKuppiSession = () => {
-  const navigate = useNavigate(); // Hook for navigating between routes
+  const navigate = useNavigate(); // Hook to programmatically navigate between routes.
 
-  // State variables for form inputs and previews
-  const [title, setTitle] = useState(""); // State for session title
-  const [url, setUrl] = useState(""); // State for session URL
-  const [description, setDescription] = useState(""); // State for session description
-  const [videoPreview, setVideoPreview] = useState(null); // State for video preview
-  const [thumbnailPreview, setThumbnailPreview] = useState(null); // State for thumbnail preview
-  const [error, setError] = useState(); // State for displaying validation error
+  // State variables to manage form inputs, previews, and errors.
+  const [title, setTitle] = useState(""); 
+  const [url, setUrl] = useState(""); 
+  const [description, setDescription] = useState(""); 
+  const [videoPreview, setVideoPreview] = useState(null); 
+  const [thumbnailPreview, setThumbnailPreview] = useState(null); 
+  const [error, setError] = useState(); 
+  const [isPopupVisible, setPopupVisible] = useState(false);
 
-  // Handler function for video file upload
+  // Toggles the visibility of the popup modal.
+  const togglePopup = () => {
+    setPopupVisible(!isPopupVisible);
+  };
+
+  // Handles video upload and sets a preview.
   const handleVideoUpload = (event) => {
-    const file = event.target.files[0]; // Get the uploaded file
+    const file = event.target.files[0]; // Retrieves the uploaded file.
     if (file) {
-      const reader = new FileReader(); // FileReader for reading file contents
+      const reader = new FileReader(); // Reads file data.
       reader.onload = () => {
-        setVideoPreview(reader.result); // Set the video preview to the uploaded file
+        setVideoPreview(reader.result); // Updates the state with video preview URL.
       };
-      reader.readAsDataURL(file); // Convert file to data URL
+      reader.readAsDataURL(file); // Converts file to a data URL.
     }
   };
 
-  // Handler function for thumbnail file upload
+  // Handles thumbnail upload and sets a preview.
   const handleThumbnailUpload = (event) => {
-    const file = event.target.files[0]; // Get the uploaded file
+    const file = event.target.files[0]; // Retrieves the uploaded file.
     if (file) {
-      const reader = new FileReader(); // FileReader for reading file contents
+      const reader = new FileReader(); // Reads file data.
       reader.onload = () => {
-        setThumbnailPreview(reader.result); // Set the thumbnail preview to the uploaded file
+        setThumbnailPreview(reader.result); // Updates the state with thumbnail preview URL.
       };
-      reader.readAsDataURL(file); // Convert file to data URL
+      reader.readAsDataURL(file); // Converts file to a data URL.
     }
   };
 
-  // Function to handle the upload process
+  // Validates inputs and displays a success popup if valid.
   const handleUpload = () => {
-    // Check if all required fields are filled
+    // Check if all required fields are filled.
     if (!title || !url || !description) {
-      setError("Please fill out all required fields"); // Display error if fields are missing
+      setError("Please fill out all required fields"); // Set error message.
       return;
     }
-    setError(""); // Clear error message
-    navigate('/tutor/upload_files'); // Navigate to the next page after successful upload
+    setError(""); // Clear any previous errors.
+    togglePopup(); // Show success popup.
   };
 
   return (
     <div className="w-full min-h-[88.71vh] flex flex-col bg-gradient-to-b from-blue-200 to-gray-200 relative px-[100px] pt-[18px] gap-5">
-      {/* Back navigation button */}
+      
+      {/* Back Button */}
       <div
         className="absolute top-6 left-6 cursor-pointer"
         onClick={() => {
-          navigate("/tutor/Upload_section"); // Navigate back to previous section
+          navigate("/tutor/Upload_section"); // Navigate to the upload section.
         }}
       >
         <IoIosArrowDropleftCircle className="text-[40px] text-blue-500" />
       </div>
 
-      {/* Page title */}
+      {/* Page Title */}
       <div>
         <span className="text-[24pt] font-semibold">Upload Kuppi Section</span>
       </div>
 
-      {/* Upload form section */}
+      {/* Upload Section */}
       <div className="w-full h-full flex flex-col bg-white rounded-lg gap-5 p-5 mb-8">
         <div className="w-full h-full flex flex-row">
-          {/* Video upload section */}
+          
+          {/* Video Upload Section */}
           <div className="w-1/2 h-auto flex flex-col px-10 items-center">
             <span className="text-[18pt] font-medium">Upload Video Here</span>
             <label
@@ -83,15 +91,16 @@ const UploadKuppiSession = () => {
                 accept="video/*"
                 id="video-upload"
                 hidden
-                onChange={handleVideoUpload} // Trigger video upload handler
+                onChange={handleVideoUpload}
               />
+              {/* Video Preview */}
               <div
                 id="video-preview"
                 className={`w-full h-full rounded-lg border-2 border-dashed border-blue-500 bg-body-color flex flex-col justify-center gap-10 items-center text-center bg-center bg-cover ${
                   videoPreview ? "" : "flex p-8"
                 }`}
               >
-                {/* Display video preview if uploaded, otherwise show placeholder */}
+                {/* If no video uploaded, display placeholder */}
                 {!videoPreview ? (
                   <>
                     <IoCloudUploadSharp className="text-[48pt] text-blue-500" />
@@ -103,6 +112,7 @@ const UploadKuppiSession = () => {
                     </span>
                   </>
                 ) : (
+                  // Display video preview
                   <video
                     src={videoPreview}
                     className="w-full h-auto rounded-lg"
@@ -113,7 +123,7 @@ const UploadKuppiSession = () => {
             </label>
           </div>
 
-          {/* Thumbnail upload section */}
+          {/* Thumbnail Upload Section */}
           <div className="w-1/2 h-auto flex flex-col px-10">
             <span className="text-[12pt] font-medium">Thumbnail</span>
             <span className="text-[10pt] font-normal text-gray-500">
@@ -128,8 +138,9 @@ const UploadKuppiSession = () => {
                 accept="image/*"
                 id="thumbnail-upload"
                 hidden
-                onChange={handleThumbnailUpload} // Trigger thumbnail upload handler
+                onChange={handleThumbnailUpload} 
               />
+              {/* Thumbnail Preview */}
               <div
                 id="thumbnail-preview"
                 className={`w-full h-[260px] rounded-lg border-2 border-dashed border-gray-500 bg-body-color flex flex-col justify-center gap-10 p-7 items-center text-center bg-center bg-cover ${
@@ -141,7 +152,7 @@ const UploadKuppiSession = () => {
                     : "none",
                 }}
               >
-                {/* Display thumbnail preview if uploaded, otherwise show placeholder */}
+                {/* If no thumbnail uploaded, display placeholder */}
                 {!thumbnailPreview ? (
                   <>
                     <IoCloudDoneSharp className="text-[48pt] text-gray-500" />
@@ -158,9 +169,10 @@ const UploadKuppiSession = () => {
           </div>
         </div>
 
-        {/* Form input fields */}
+        {/* Form Fields */}
         <div className="w-full h-full flex flex-col gap-4 px-3">
-          {/* Session Title Input */}
+          
+          {/* Title Input */}
           <div className="w-auto h-auto flex flex-col gap-1">
             <label htmlFor="Session Title" className="font-medium">
               Session Title
@@ -176,7 +188,7 @@ const UploadKuppiSession = () => {
             />
           </div>
 
-          {/* Session URL Input */}
+          {/* URL Input */}
           <div className="w-auto h-auto flex flex-col gap-1">
             <label htmlFor="Session URL" className="font-medium">
               Session URL
@@ -192,7 +204,7 @@ const UploadKuppiSession = () => {
             />
           </div>
 
-          {/* Session Description Input */}
+          {/* Description Input */}
           <div className="w-auto h-auto flex flex-col gap-1">
             <label htmlFor="Description" className="font-medium">
               Description
@@ -208,13 +220,13 @@ const UploadKuppiSession = () => {
             />
           </div>
 
-          {/* Error Message Display */}
+          {/* Error Message */}
           <p className="w-full h-[30pt] text-[12pt] text-red-500 font-medium px-5">{error}</p>
 
           {/* Action Buttons */}
           <div className="w-full h-auto flex flex-row text-[12pt] font-medium justify-end gap-5">
             <button
-              onClick={handleUpload} // Trigger upload handler
+              onClick={handleUpload} 
               className="w-[120px] py-3 border-2 border-blue-500 bg-blue-500 hover:border-blue-600 hover:bg-blue-600 text-white rounded-lg"
             >
               Upload
@@ -225,8 +237,33 @@ const UploadKuppiSession = () => {
           </div>
         </div>
       </div>
+      
+      {/* Popup Modal */}
+      {isPopupVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white w-[600px] p-6 rounded-lg shadow-lg flex flex-col gap-8 justify-center items-center">
+           
+            {/* Close Button */}
+            <div className="w-full flex justify-end items-center">
+              <button onClick={togglePopup} className="text-gray-500 hover:text-gray-700">✕</button>
+            </div>
+            {/* Success Icon */}
+            <FaCheckCircle className='text-[96pt] text-blue-500' />
+            <div className='w-full h-full flex flex-col justify-center gap-1'>
+              <span className='text-[18pt] text-blue-500 font-medium text-center'>Kuppi Session Upload Successfully</span>
+            </div>
+            <button onClick={() => { 
+                togglePopup();
+                navigate('/tutor/Upload_section'); // Navigate back to the upload section.
+              }} 
+              className='w-[200px] py-3 text-[12pt] font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600'>
+              Okay
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default UploadKuppiSession;
+export default UploadKuppiSession; // Export the component.

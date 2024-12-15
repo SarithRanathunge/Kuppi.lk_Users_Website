@@ -15,7 +15,7 @@ const SelectYear = () => {
       {/* Back Button */}
       <div 
         className='absolute top-6 left-6 cursor-pointer' 
-        onClick={() => { navigate('/tutor/home') }} // Navigate back to the home page
+        onClick={() => { navigate('/tutor/select_degree') }} // Navigate back to the home page
       >
         <IoIosArrowDropleftCircle className='text-[40px] text-blue-500' />
       </div>

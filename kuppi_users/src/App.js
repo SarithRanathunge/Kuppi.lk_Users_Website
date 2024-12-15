@@ -19,10 +19,12 @@ import TutorHome from './users/tutor/pages/TutorHome';
 import Withdrawal from './users/tutor/pages/Withdrawal';
 import Earnings from './users/tutor/pages/Earnings';
 import SelectYear from './users/tutor/pages/SelectYear';
-import SelectFaculty from './users/tutor/pages/SelectFaculty';
+import SelectFaculty from './users/tutor/pages/SelectDegree';
 import UploadSection from './users/tutor/pages/UploadSection';
 import UploadKuppiSession from './users/tutor/pages/UploadKuppiSession';
 import UploadFilesSection from './users/tutor/pages/UploadFilesSection';
+import SelectCourseModule from './users/tutor/pages/SelectCourseModule';
+import YourKuppi from './users/tutor/pages/YourKuppi';
 
 const App = () => {
     //get the login from the AuthContext for acessability in each user stage
@@ -59,10 +61,12 @@ const App = () => {
                 <Route path="withdrawal" element={<Withdrawal />} />
                 <Route path="earnings" element={<Earnings />} />
                 <Route path="select_year" element={<SelectYear />} />
-                <Route path="select_faculty" element={<SelectFaculty />} />
+                <Route path="select_degree" element={<SelectFaculty />} />
                 <Route path="Upload_section" element={<UploadSection />} />
                 <Route path="upload_kuppi" element={<UploadKuppiSession />} />
                 <Route path="upload_files" element={<UploadFilesSection />} />
+                <Route path="select_module" element={<SelectCourseModule />} />
+                <Route path="your_kuppi" element={<YourKuppi />} />
             </Route>
         </Routes>
     );

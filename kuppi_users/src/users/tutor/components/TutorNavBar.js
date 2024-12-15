@@ -204,7 +204,9 @@ const TutorNavBar = () => {
             <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded">
               Profile
             </button>
-            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded">
+            <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded"
+            onClick={()=>{ navigate('/tutor/your_kuppi') }}
+            >
               Your Kuppi
             </button>
             <button className="w-full text-left text-gray-700 hover:bg-gray-100 py-2 px-4 rounded"

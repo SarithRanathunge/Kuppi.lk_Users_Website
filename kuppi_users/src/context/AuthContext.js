@@ -12,25 +12,41 @@ export const AuthProvider = ({ children }) => {
     const [module, newModule] = useState('Empty module'); // Stores the selected module name
     const [moduleKuppi, setModuleKuppi] = useState('Empty module kuppi'); // Stores module info for Kuppi
 
-    //tutor
-    const [year, setYear] = useState('Empty Year')
-    const [faculty, setFaculty] = useState('Empty Faculty')
+    // Tutor-related states
+    const [year, setYear] = useState('Empty Year'); // Stores the tutor-selected academic year
+    const [degree, setDegree] = useState('Empty Degree'); // Stores the tutor-selected degree
+    const [courseModule, setcourseModule] = useState('Empty Course Module'); // Stores the tutor-selected course module
+    const [kuppiModule, setKuppiModule] = useState('Empty Kuppi Module'); // Stores the tutor-selected Kuppi module
 
-    // useEffect hook runs on component mount to check if user or tutor is logged in
+    // useEffect hook runs when the component mounts to check login statuses
     useEffect(() => {
-        checkLoginStatus(); // Check if student is logged in
-        checkTutorLoginStatus(); // Check if tutor is logged in
+        checkLoginStatus(); // Check if the student is logged in
+        checkTutorLoginStatus(); // Check if the tutor is logged in
     }, []);
 
-    const addTutorYear = (year) => {
-        setYear(year)
-        console.log('Tutor Select Year: ' + year);
-    }
+    // Function to update the tutor's selected Kuppi module
+    const addTutorKuppiModule = (kuppiModuleName) => {
+        setKuppiModule(kuppiModuleName);
+        console.log('Tutor kuppi Module Name: ' + kuppiModuleName);
+    };
 
-    const addTutorFaculty = (faculty) => {
-        setFaculty(faculty)
-        console.log('Tutor Select Faculty: ' + faculty)
-    }
+    // Function to update the tutor's selected year
+    const addTutorYear = (year) => {
+        setYear(year);
+        console.log('Tutor Select Year: ' + year);
+    };
+
+    // Function to update the tutor's selected degree
+    const addTutorDegree = (degree) => {
+        setDegree(degree);
+        console.log('Tutor Select Faculty: ' + degree);
+    };
+
+    // Function to update the tutor's selected course module
+    const addTutorCourseModule = (module) => {
+        setcourseModule(module);
+        console.log('Tutor Select course module: ' + module);
+    };
 
     // Function to update the university state
     const addUniversity = (university) => {
@@ -96,7 +112,7 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
             login, loginUser, logoutUser, tutorlogin, loginTutor, logoutTutor,
             university, addUniversity, module, addModuleName, moduleKuppi, addModuleKuppi,
-            year, addTutorYear, faculty, addTutorFaculty
+            year, addTutorYear, degree, addTutorDegree, courseModule, addTutorCourseModule, kuppiModule, addTutorKuppiModule
         }}>
             {children} {/* Render the children components within the provider */}
         </AuthContext.Provider>
